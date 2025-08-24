@@ -7,6 +7,8 @@ Build a multi-architecture Trino Docker image (amd64, arm64): https://github.com
 
 Trino images are pushed to https://hub.docker.com/repository/docker/mrdom/trino/tags
 
+![Alt text](dockerhub-trino.png?raw=true)
+
 ## Install Jenkins Helm chart
 ```
 core@core-10920x:~/jenkins-k8s-trino-pipeline$ ./install_jenkins_k8s_local.sh
