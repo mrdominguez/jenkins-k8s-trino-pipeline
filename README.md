@@ -3,7 +3,7 @@ Pipeline to build Trino Docker image through Jenkins on Kubernetes.
 
 ![Alt text](jenkins-k8s-trino-pipeline.png?raw=true)
 
-Related repository: https://github.com/mrdominguez/multiarch-trino-docker
+Build a multi-architecture Trino Docker image (amd64, arm64): https://github.com/mrdominguez/multiarch-trino-docker
 
 Trino images are pushed to https://hub.docker.com/repository/docker/mrdom/trino/tags
 
