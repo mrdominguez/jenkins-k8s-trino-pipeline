@@ -56,6 +56,22 @@ statefulset.apps/jenkins   1/1     17m
 ```
 
 ## Build custom Docker-in-Docker (DinD) image
+The `dind` image is used as the container in the Jenkins Kubernetes agent pod defined by `dind-pod.yaml`.
+```
+core@core-10920x:~/jenkins-k8s-trino-pipeline$ cat dind-pod.yaml
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: docker
+    image: mrdom/docker:dind
+    imagePullPolicy: Always
+    #command:
+    #- "dockerd"
+    tty: true
+    securityContext:
+      privileged: true
+```
 https://hub.docker.com/repository/docker/mrdom/docker/general
 ```
 core@core-10920x:~/jenkins-k8s-trino-pipeline$ cat Dockerfile
@@ -93,22 +109,6 @@ core@core-10920x:~/jenkins-k8s-trino-pipeline$ docker build -t docker:dind .
 core@core-10920x:~/jenkins-k8s-trino-pipeline$ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
 docker       dind      2a8b234fdb10   13 seconds ago   413MB
-```
-The `dind` image is used as the container in the Jenkins Kubernetes agent pod defined by `dind-pod.yaml`.
-```
-core@core-10920x:~/jenkins-k8s-trino-pipeline$ cat dind-pod.yaml
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: docker
-    image: mrdom/docker:dind
-    imagePullPolicy: Always
-    #command:
-    #- "dockerd"
-    tty: true
-    securityContext:
-      privileged: true
 ```
 
 ## Create `Pipeline` in Jenkins
